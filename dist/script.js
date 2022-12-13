@@ -930,16 +930,19 @@ module.exports = g;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+
 
 
 window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
-  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])('.main-slider-item', 'vertical');
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_2__["default"])('.main-slider-item', 'vertical');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_2__["default"])('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
+  Object(_modules_filter__WEBPACK_IMPORTED_MODULE_0__["default"])();
 });
 
 /***/ }),
@@ -963,6 +966,87 @@ var calcScroll = function calcScroll() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calcScroll);
+
+/***/ }),
+
+/***/ "./src/js/modules/filter.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/filter.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var filter = function filter() {
+  var menu = document.querySelector('.portfolio-menu'),
+      menuItem = menu.querySelectorAll('li'),
+      content = document.querySelector('.portfolio-wrapper'),
+      all = content.querySelectorAll('.all'),
+      lovers = content.querySelectorAll('.lovers'),
+      chef = content.querySelectorAll('.chef'),
+      girl = content.querySelectorAll('.girl'),
+      guy = content.querySelectorAll('.guy'),
+      portfoliNo = document.querySelectorAll('.container > .portfolio-no');
+  menu.addEventListener('click', function (e) {
+    var target = e.target.className;
+
+    switch (target) {
+      case 'all':
+        showContent(all, target);
+        break;
+
+      case 'lovers':
+        showContent(lovers, target);
+        break;
+
+      case 'chef':
+        showContent(chef, target);
+        break;
+
+      case 'girl':
+        showContent(girl, target);
+        break;
+
+      case 'guy':
+        showContent(guy, target);
+        break;
+
+      case 'grandmother':
+      case 'granddad':
+        showContent(portfoliNo, target);
+        break;
+    }
+  });
+
+  function showContent(name, e) {
+    all.forEach(function (item) {
+      item.style.display = 'none';
+      item.classList.remove('animated', 'fadeIn');
+    });
+    portfoliNo.forEach(function (p) {
+      p.style.display = 'none';
+      p.classList.remove('animated', 'fadeIn');
+    });
+    name.forEach(function (item) {
+      item.style.display = 'block';
+      item.classList.add('animated', 'fadeIn');
+    });
+    menuItem.forEach(function (item) {
+      item.classList.remove('active');
+
+      if (item.classList.contains(e)) {
+        item.classList.add('active');
+      }
+    });
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (filter);
 
 /***/ }),
 
