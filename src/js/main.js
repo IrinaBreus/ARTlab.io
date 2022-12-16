@@ -1,4 +1,5 @@
 import accordion from "./modules/accordion";
+import burger from "./modules/burger";
 import filter from "./modules/filter";
 import modals from "./modules/modals";
 import sizePicture from "./modules/sizePicture";
@@ -16,4 +17,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     sizePicture();
     accordion();
+
+    burger();
 })
