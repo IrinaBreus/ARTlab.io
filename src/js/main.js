@@ -2,6 +2,7 @@ import accordion from "./modules/accordion";
 import burger from "./modules/burger";
 import filter from "./modules/filter";
 import modals from "./modules/modals";
+import scrolling from "./modules/scrolling";
 import sizePicture from "./modules/sizePicture";
 import slider from "./modules/slider";
 
@@ -16,7 +17,9 @@ window.addEventListener('DOMContentLoaded', () => {
     filter();
 
     sizePicture();
-    accordion();
 
+    accordion();
     burger();
+    scrolling('.pageup');
+    scrolling('.portfolio');
 })

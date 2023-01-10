@@ -1552,8 +1552,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
 /* harmony import */ var _modules_filter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/filter */ "./src/js/modules/filter.js");
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
-/* harmony import */ var _modules_sizePicture__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/sizePicture */ "./src/js/modules/sizePicture.js");
-/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+/* harmony import */ var _modules_scrolling__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/scrolling */ "./src/js/modules/scrolling.js");
+/* harmony import */ var _modules_sizePicture__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/sizePicture */ "./src/js/modules/sizePicture.js");
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/slider */ "./src/js/modules/slider.js");
+
 
 
 
@@ -1564,12 +1566,14 @@ window.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_3__["default"])();
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])('.main-slider-item', 'vertical');
-  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_5__["default"])('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_6__["default"])('.main-slider-item', 'vertical');
+  Object(_modules_slider__WEBPACK_IMPORTED_MODULE_6__["default"])('.feedback-slider-item', 'horizontal', '.main-prev-btn', '.main-next-btn');
   Object(_modules_filter__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  Object(_modules_sizePicture__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  Object(_modules_sizePicture__WEBPACK_IMPORTED_MODULE_5__["default"])();
   Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_0__["default"])();
   Object(_modules_burger__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  Object(_modules_scrolling__WEBPACK_IMPORTED_MODULE_4__["default"])('.pageup');
+  Object(_modules_scrolling__WEBPACK_IMPORTED_MODULE_4__["default"])('.portfolio');
 });
 
 /***/ }),
@@ -1835,6 +1839,109 @@ var modals = function modals() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
+
+/***/ }),
+
+/***/ "./src/js/modules/scrolling.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/scrolling.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var scrolling = function scrolling(upSelector) {
+  var upElem = document.querySelector(upSelector);
+  window.addEventListener('scroll', function () {
+    if (document.documentElement.scrollTop > 1650) {
+      upElem.classList.add('animated', 'fadeIn');
+      upElem.classList.remove('fadeOut');
+    } else {
+      upElem.classList.remove('fadeIn');
+      upElem.classList.add('fadeOut');
+    }
+  }); // Скролл с использование RAF
+
+  var links = document.querySelectorAll('[href^="#"]'),
+      speed = 0.3;
+  links.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var widthTop = Math.round(document.documentElement.scrollTop || document.body.scrollTop),
+          hash = this.hash,
+          toBlock = document.querySelector(hash).getBoundingClientRect().top,
+          start = null;
+      requestAnimationFrame(step);
+
+      function step(time) {
+        if (start === null) {
+          start = time;
+        }
+
+        var progress = time - start,
+            r = toBlock < 0 ? Math.max(widthTop - progress / speed, widthTop + toBlock) : Math.min(widthTop + progress / speed, widthTop + toBlock);
+        document.documentElement.scrollTo(0, r);
+
+        if (r != widthTop + toBlock) {
+          requestAnimationFrame(step);
+        } else {
+          location.hash = hash;
+        }
+      }
+    });
+  }); // Скролл с использованием JS
+  // const element = document.documentElement,
+  //       body = document.body;
+  // const calcScroll = () => {
+  //     upElem.addEventListener('click', function(e) {
+  //         let scrollTop = Math.round(element.scrollTop || body.scrollTop);
+  //         if (this.hash !== '') {
+  //             e.preventDefault();
+  //             let hashElem = document.querySelector(this.hash),
+  //                 hashElemTop = 0;
+  //             while (hashElem.offsetParent) {
+  //                 hashElemTop += hashElem.offsetTop;
+  //                 hashElem = hashElem.offsetParent;
+  //             }
+  //             hashElemTop = Math.round(hashElemTop)
+  //             smoothScroll(scrollTop, hashElemTop, this.hash);
+  //         }
+  //     })
+  // }
+  // const smoothScroll = (from, to, hash) => {
+  //     let timeInterval = 1,
+  //         prevScrollTop,
+  //         speed;
+  //     if (to > from) {
+  //         speed = 30;
+  //     } else {
+  //         speed = -30;
+  //     }
+  //     let move = setInterval(() => {
+  //         let scrollTop = Math.round(element.scrollTop || body.scrollTop);
+  //         if (
+  //             prevScrollTop === scrollTop ||
+  //             (to > from && scrollTop >= to) ||
+  //             (to < from && scrollTop <= to)
+  //         ) {
+  //             clearInterval(move);
+  //             history.replaceState(history.state, document.title, location.href.replace(/#.*$/g, '') + hash);
+  //         } else {
+  //             body.scrollTop += speed;
+  //             element.scrollTop += speed;
+  //             prevScrollTop = scrollTop;
+  //         }
+  //     }, timeInterval);
+  // };
+  // calcScroll();
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (scrolling);
 
 /***/ }),
 
