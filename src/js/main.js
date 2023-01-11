@@ -1,5 +1,6 @@
 import accordion from "./modules/accordion";
 import burger from "./modules/burger";
+import checkTextInputs from "./modules/checkTextInputs";
 import filter from "./modules/filter";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
@@ -25,6 +26,8 @@ window.addEventListener('DOMContentLoaded', () => {
     scrolling('.pageup');
 
     mask('[name="phone"]');
+    checkTextInputs('[name="name"]');
+    checkTextInputs('[name="message"]');
     forms();
 
 })

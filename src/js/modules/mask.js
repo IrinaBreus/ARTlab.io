@@ -4,9 +4,6 @@ const mask = (selector) => {
         elem.focus();
 
         if (elem.setSelectionRange) {
-            if (pos > 2) {
-                elem.setSelectionRange(3, 3);
-            }
             elem.setSelectionRange(pos, pos);
         } else if (elem.createTextRange) {
             let range = elem.createTextRange();
