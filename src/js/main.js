@@ -2,7 +2,7 @@ import accordion from "./modules/accordion";
 import burger from "./modules/burger";
 import filter from "./modules/filter";
 import forms from "./modules/forms";
-import form from "./modules/forms";
+import mask from "./modules/mask";
 import modals from "./modules/modals";
 import scrolling from "./modules/scrolling";
 import sizePicture from "./modules/sizePicture";
@@ -24,5 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
     burger();
     scrolling('.pageup');
 
+    mask('[name="phone"]');
     forms();
+
 })

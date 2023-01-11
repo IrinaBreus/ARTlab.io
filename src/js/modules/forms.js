@@ -2,7 +2,8 @@ const forms = () => {
     const formsAll = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
           textareas = document.querySelectorAll('textarea'),
-          upload = document.querySelectorAll('[name="upload"]');
+          upload = document.querySelectorAll('[name="upload"]'),
+          phones = document.querySelectorAll('[name="phone"]');
 
     const message = {
         loading: 'Загрузка...',
