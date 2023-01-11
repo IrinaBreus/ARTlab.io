@@ -106,7 +106,9 @@ h4 {
   right: 2rem;
   cursor: pointer;
 }
-
+.status {
+  text-align: center;
+}
 .pageup {
   opacity: 0;
   width: 26px ;

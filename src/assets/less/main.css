@@ -124,7 +124,9 @@ h4 {
   border: 1px solid white;
   transition: 1s all;
 }
-
+.status {
+  text-align: center;
+}
 .header .container {
   padding: 0;
 }

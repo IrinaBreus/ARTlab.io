@@ -111,6 +111,9 @@ h4 {
   right: 2rem;
   cursor: pointer;
 }
+.status {
+  text-align: center;
+}
 .pageup {
   opacity: 0;
   width: 26px ;
@@ -124,7 +127,6 @@ h4 {
   border: 1px solid white;
   transition: 1s all;
 }
-
 .header .container {
   padding: 0;
 }
@@ -1719,4 +1721,3 @@ h4 {
     width: 25rem;
   }
 }
-
