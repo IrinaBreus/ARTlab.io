@@ -1,5 +1,6 @@
 import accordion from "./modules/accordion";
 import burger from "./modules/burger";
+import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
 import filter from "./modules/filter";
 import forms from "./modules/forms";
@@ -12,6 +13,8 @@ import slider from "./modules/slider";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
+
+    let state = {};
 
     modals();
     
@@ -29,7 +32,10 @@ window.addEventListener('DOMContentLoaded', () => {
     mask('[name="phone"]');
     checkTextInputs('[name="name"]');
     checkTextInputs('[name="message"]');
-    forms();
+    forms(state);
 
     showMoreStyle();
+
+    calc(state);
+
 })
