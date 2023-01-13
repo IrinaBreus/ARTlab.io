@@ -6,6 +6,7 @@ import forms from "./modules/forms";
 import mask from "./modules/mask";
 import modals from "./modules/modals";
 import scrolling from "./modules/scrolling";
+import showMoreStyle from "./modules/showMoreStyle";
 import sizePicture from "./modules/sizePicture";
 import slider from "./modules/slider";
 
@@ -30,4 +31,5 @@ window.addEventListener('DOMContentLoaded', () => {
     checkTextInputs('[name="message"]');
     forms();
 
+    showMoreStyle();
 })
