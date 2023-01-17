@@ -43,7 +43,7 @@ const slider = (selector, direction, prev, next) => {
                 plusSlide(1);
                 slides[count].classList.remove('slideInRight');
                 slides[count].classList.add('slideInLeft');
-            }, 3000)
+            }, 5000)
         }
     }
 

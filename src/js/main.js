@@ -2,6 +2,7 @@ import accordion from "./modules/accordion";
 import burger from "./modules/burger";
 import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
+import drop from "./modules/drop";
 import filter from "./modules/filter";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
@@ -38,4 +39,5 @@ window.addEventListener('DOMContentLoaded', () => {
 
     calc(state);
 
+    drop();
 })
